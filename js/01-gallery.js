@@ -17,6 +17,7 @@ function createGalleryItems(photos) {
     <a class="gallery__link" href="${original}">
         <img class="gallery__image"
             src="${preview}"
+            data-source="${original}"
             alt="${description}"
         >
     </a>
@@ -36,6 +37,12 @@ function onConteinerClick(event) {
     const instance = basicLightbox.create(`<img src="${event.target.dataset.source}">`)
 
     instance.show()
+
+//     const instance = basicLightbox.create(`
+//     <img src="assets/images/image.png" width="800" height="600">
+// `)
+
+// instance.show()
     // const isLinkImageElement = event.target.closest('.gallery__link');
     // const largeResolutionLink = isLinkImageElement.
 
