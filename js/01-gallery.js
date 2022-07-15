@@ -25,27 +25,29 @@ function createGalleryItems(photos) {
 };
 
 function onConteinerClick(event) {
+    event.preventDefault();
     const isImageElement = event.target.classList.contains('gallery__image');
 
     if (!isImageElement) {
         return;
     }
 
-    // const targetImage = event.target.getAttribute("src");
-    // console.log(targetImage);
+    const srcLagestSizePhoto = event.target.dataset.source;
 
-    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}">`)
+    const instance = basicLightbox.create(`<img src="${srcLagestSizePhoto}">`)
 
     instance.show()
+    
 
-//     const instance = basicLightbox.create(`
-//     <img src="assets/images/image.png" width="800" height="600">
-// `)
+    gallery.addEventListener("keydown", onCloseModal, { once: true });
 
-// instance.show()
-    // const isLinkImageElement = event.target.closest('.gallery__link');
-    // const largeResolutionLink = isLinkImageElement.
-
+    function onCloseModal(event) {
+        console.log(event.code);
+        if (event.code === 'Escape') {
+            instance.close();
+        }
+   
+    }
     // console.log(isLinkImageElement);
 }
 
