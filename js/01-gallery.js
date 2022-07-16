@@ -8,12 +8,13 @@ const galleryItem = createGalleryItems(galleryItems);
 
 gallery.insertAdjacentHTML('beforeend', galleryItem);
 
-gallery.addEventListener('click', onConteinerClick)
+gallery.addEventListener('click', onConteinerClick);
 
 
-function createGalleryItems(photos) {
-    return photos.map(({ preview, original, description }) => {
+function createGalleryItems(galleryItems) {
+    return galleryItems.map(({ preview, original, description }) => {
         return `
+        <div class="gallery__item">
     <a class="gallery__link" href="${original}">
         <img class="gallery__image"
             src="${preview}"
@@ -21,6 +22,7 @@ function createGalleryItems(photos) {
             alt="${description}"
         >
     </a>
+    </div>
     `}).join('');
 };
 
@@ -38,7 +40,6 @@ function onConteinerClick(event) {
 
     instance.show()
     
-
     gallery.addEventListener("keydown", onCloseModal, { once: true });
 
     function onCloseModal(event) {
@@ -46,11 +47,10 @@ function onConteinerClick(event) {
         if (event.code === 'Escape') {
             instance.close();
         }
-   
     }
-    // console.log(isLinkImageElement);
+   
 }
 
-
+ 
 
 // console.log()
